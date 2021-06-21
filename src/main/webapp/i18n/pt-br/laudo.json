@@ -1,0 +1,25 @@
+{
+  "agendamentoMedicoApp": {
+    "laudo": {
+      "home": {
+        "title": "Laudos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Laudo",
+        "createOrEditLabel": "Criar ou editar Laudo",
+        "notFound": "Nenhum Laudo encontrado"
+      },
+      "created": "Um novo Laudo foi criado com o identificador {{ param }}",
+      "updated": "Um Laudo foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Laudo foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Laudo {{ id }}?"
+      },
+      "detail": {
+        "title": "Laudo"
+      },
+      "id": "ID",
+      "parecerMedico": "Parecer Medico",
+      "encaminhamento": "Encaminhamento"
+    }
+  }
+}

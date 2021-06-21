@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-consulta-heading"
+        data-cy="ConsultaCreateUpdateHeading"
+        jhiTranslate="agendamentoMedicoApp.consulta.home.createOrEditLabel"
+      >
+        Create or edit a Consulta
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.consulta.procedimento" for="field_procedimento"
+            >Procedimento</label
+          >
+          <select class="form-control" name="procedimento" formControlName="procedimento" id="field_procedimento" data-cy="procedimento">
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.Procedimento.null' | translate }}</option>
+            <option value="CONSULTA">{{ 'agendamentoMedicoApp.Procedimento.CONSULTA' | translate }}</option>
+            <option value="EMFERMAGEM">{{ 'agendamentoMedicoApp.Procedimento.EMFERMAGEM' | translate }}</option>
+            <option value="OUTRO">{{ 'agendamentoMedicoApp.Procedimento.OUTRO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.consulta.tipoConsulta" for="field_tipoConsulta"
+            >Tipo Consulta</label
+          >
+          <select class="form-control" name="tipoConsulta" formControlName="tipoConsulta" id="field_tipoConsulta" data-cy="tipoConsulta">
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.Especialicacao.null' | translate }}</option>
+            <option value="CLINICA_GERAL">{{ 'agendamentoMedicoApp.Especialicacao.CLINICA_GERAL' | translate }}</option>
+            <option value="EMFERMAGEM">{{ 'agendamentoMedicoApp.Especialicacao.EMFERMAGEM' | translate }}</option>
+            <option value="GERIATRIA">{{ 'agendamentoMedicoApp.Especialicacao.GERIATRIA' | translate }}</option>
+            <option value="GINECOLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.GINECOLOGIA' | translate }}</option>
+            <option value="OBSTETRICIA">{{ 'agendamentoMedicoApp.Especialicacao.OBSTETRICIA' | translate }}</option>
+            <option value="NUTRICIONISTA">{{ 'agendamentoMedicoApp.Especialicacao.NUTRICIONISTA' | translate }}</option>
+            <option value="ONCOLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.ONCOLOGIA' | translate }}</option>
+            <option value="NEUROLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.NEUROLOGIA' | translate }}</option>
+            <option value="PEDIATRIA">{{ 'agendamentoMedicoApp.Especialicacao.PEDIATRIA' | translate }}</option>
+            <option value="PSICOLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.PSICOLOGIA' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.consulta.medico" for="field_medico">Medico</label>
+          <select class="form-control" id="field_medico" data-cy="medico" name="medico" formControlName="medico">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="medicoOption.id === editForm.get('medico')!.value?.id ? editForm.get('medico')!.value : medicoOption"
+              *ngFor="let medicoOption of medicosSharedCollection; trackBy: trackMedicoById"
+            >
+              {{ medicoOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.consulta.laudo" for="field_laudo">Laudo</label>
+          <select class="form-control" id="field_laudo" data-cy="laudo" name="laudo" formControlName="laudo">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="laudoOption.id === editForm.get('laudo')!.value?.id ? editForm.get('laudo')!.value : laudoOption"
+              *ngFor="let laudoOption of laudosSharedCollection; trackBy: trackLaudoById"
+            >
+              {{ laudoOption.parecerMedico }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

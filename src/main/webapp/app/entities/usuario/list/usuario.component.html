@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="UsuarioHeading">
+    <span jhiTranslate="agendamentoMedicoApp.usuario.home.title">Usuarios</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="agendamentoMedicoApp.usuario.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-usuario"
+        [routerLink]="['/usuario/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="agendamentoMedicoApp.usuario.home.createLabel"> Create a new Usuario </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="usuarios?.length === 0">
+    <span jhiTranslate="agendamentoMedicoApp.usuario.home.notFound">No usuarios found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="usuarios && usuarios.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.usuario.cpf">Cpf</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.usuario.nome">Nome</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.usuario.dataNascimento">Data Nascimento</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.usuario.rg">Rg</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.usuario.sexo">Sexo</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.usuario.telefone">Telefone</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.usuario.email">Email</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/usuario', usuario.id, 'view']">{{ usuario.id }}</a>
+          </td>
+          <td>{{ usuario.cpf }}</td>
+          <td>{{ usuario.nome }}</td>
+          <td>{{ usuario.dataNascimento | formatMediumDate }}</td>
+          <td>{{ usuario.rg }}</td>
+          <td jhiTranslate="{{ 'agendamentoMedicoApp.Sexo.' + usuario.sexo }}">{{ usuario.sexo }}</td>
+          <td>{{ usuario.telefone }}</td>
+          <td>{{ usuario.email }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/usuario', usuario.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/usuario', usuario.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(usuario)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

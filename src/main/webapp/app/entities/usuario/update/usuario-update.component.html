@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-usuario-heading" data-cy="UsuarioCreateUpdateHeading" jhiTranslate="agendamentoMedicoApp.usuario.home.createOrEditLabel">
+        Create or edit a Usuario
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.usuario.cpf" for="field_cpf">Cpf</label>
+          <input type="text" class="form-control" name="cpf" id="field_cpf" data-cy="cpf" formControlName="cpf" />
+          <div *ngIf="editForm.get('cpf')!.invalid && (editForm.get('cpf')!.dirty || editForm.get('cpf')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('cpf')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.usuario.nome" for="field_nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.usuario.dataNascimento" for="field_dataNascimento"
+            >Data Nascimento</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dataNascimento"
+              data-cy="dataNascimento"
+              type="text"
+              class="form-control"
+              name="dataNascimento"
+              ngbDatepicker
+              #dataNascimentoDp="ngbDatepicker"
+              formControlName="dataNascimento"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataNascimentoDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.usuario.rg" for="field_rg">Rg</label>
+          <input type="number" class="form-control" name="rg" id="field_rg" data-cy="rg" formControlName="rg" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.usuario.sexo" for="field_sexo">Sexo</label>
+          <select class="form-control" name="sexo" formControlName="sexo" id="field_sexo" data-cy="sexo">
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.Sexo.null' | translate }}</option>
+            <option value="MASCULINO">{{ 'agendamentoMedicoApp.Sexo.MASCULINO' | translate }}</option>
+            <option value="FEMININO">{{ 'agendamentoMedicoApp.Sexo.FEMININO' | translate }}</option>
+            <option value="OUTRO">{{ 'agendamentoMedicoApp.Sexo.OUTRO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.usuario.telefone" for="field_telefone">Telefone</label>
+          <input type="text" class="form-control" name="telefone" id="field_telefone" data-cy="telefone" formControlName="telefone" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.usuario.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

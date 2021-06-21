@@ -42,7 +42,9 @@
     "jwtSecretKey": "ZmY3NTdkMWJhYTdiM2NmNWJmMmRjMGU2YTJkYjdmODg2YTg0YmQ0NDE0OGY4ZTliNGRiZjNlY2Q1ZmQ3YWI5OGI2OTU5OThiOThmNGY3MDhmMmRlMGRkMWI0MmRmNzg2MzFlZGEwNjhhMjI5MWRlZTExMmZiZmUwNjM4MGY0MDI=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Medico", "Usuario", "AgendamentoConsulta", "Consulta", "Laudo"],
+    "lastLiquibaseTimestamp": 1624311052000
   },
   "git-provider": "GitHub",
   "git-company": "alexandeoliveira",

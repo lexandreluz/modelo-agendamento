@@ -1,0 +1,60 @@
+{
+  "name": "AgendamentoConsulta",
+  "fields": [
+    {
+      "fieldName": "idAgendamento",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "convenio",
+      "fieldType": "Convenio",
+      "fieldValues": "BANCARIO,FUNERARIA,PARTICULAR,OUTRO"
+    },
+    {
+      "fieldName": "tipoAgendamento",
+      "fieldType": "TipoAgendamento",
+      "fieldValues": "EMERGENCIA,NOVA_CONSULTA,RETORNO"
+    },
+    {
+      "fieldName": "procedimento",
+      "fieldType": "Procedimento",
+      "fieldValues": "CONSULTA,EMFERMAGEM,OUTRO"
+    },
+    {
+      "fieldName": "dataHora",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "statusAgendamento",
+      "fieldType": "Status",
+      "fieldValues": "CONCLUIDO,AGENDADO,CANCELADO"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "agendamentoConsulta",
+      "relationshipName": "usuario",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "medico",
+      "otherEntityRelationshipName": "agendamentoConsulta",
+      "relationshipName": "medico",
+      "otherEntityField": "nome"
+    }
+  ],
+  "entityTableName": "agendamento_consulta",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210621213050"
+}

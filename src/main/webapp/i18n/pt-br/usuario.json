@@ -1,0 +1,30 @@
+{
+  "agendamentoMedicoApp": {
+    "usuario": {
+      "home": {
+        "title": "Usuarios",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Usuario",
+        "createOrEditLabel": "Criar ou editar Usuario",
+        "notFound": "Nenhum Usuario encontrado"
+      },
+      "created": "Um novo Usuario foi criado com o identificador {{ param }}",
+      "updated": "Um Usuario foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Usuario foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Usuario"
+      },
+      "id": "ID",
+      "cpf": "Cpf",
+      "nome": "Nome",
+      "dataNascimento": "Data Nascimento",
+      "rg": "Rg",
+      "sexo": "Sexo",
+      "telefone": "Telefone",
+      "email": "Email"
+    }
+  }
+}

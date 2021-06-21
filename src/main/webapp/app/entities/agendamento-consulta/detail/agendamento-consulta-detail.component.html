@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="agendamentoConsulta">
+      <h2 data-cy="agendamentoConsultaDetailsHeading">
+        <span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.detail.title">Agendamento Consulta</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ agendamentoConsulta.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.idAgendamento">Id Agendamento</span></dt>
+        <dd>
+          <span>{{ agendamentoConsulta.idAgendamento }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.convenio">Convenio</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'agendamentoMedicoApp.Convenio.' + agendamentoConsulta.convenio }}">{{
+            agendamentoConsulta.convenio
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.tipoAgendamento">Tipo Agendamento</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'agendamentoMedicoApp.TipoAgendamento.' + agendamentoConsulta.tipoAgendamento }}">{{
+            agendamentoConsulta.tipoAgendamento
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.procedimento">Procedimento</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'agendamentoMedicoApp.Procedimento.' + agendamentoConsulta.procedimento }}">{{
+            agendamentoConsulta.procedimento
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.dataHora">Data Hora</span></dt>
+        <dd>
+          <span>{{ agendamentoConsulta.dataHora | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.statusAgendamento">Status Agendamento</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'agendamentoMedicoApp.Status.' + agendamentoConsulta.statusAgendamento }}">{{
+            agendamentoConsulta.statusAgendamento
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.usuario">Usuario</span></dt>
+        <dd>
+          <div *ngIf="agendamentoConsulta.usuario">
+            <a [routerLink]="['/usuario', agendamentoConsulta.usuario?.id, 'view']">{{ agendamentoConsulta.usuario?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.medico">Medico</span></dt>
+        <dd>
+          <div *ngIf="agendamentoConsulta.medico">
+            <a [routerLink]="['/medico', agendamentoConsulta.medico?.id, 'view']">{{ agendamentoConsulta.medico?.nome }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/agendamento-consulta', agendamentoConsulta.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

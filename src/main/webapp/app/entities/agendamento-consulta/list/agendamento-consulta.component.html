@@ -1,0 +1,106 @@
+<div>
+  <h2 id="page-heading" data-cy="AgendamentoConsultaHeading">
+    <span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.home.title">Agendamento Consultas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-agendamento-consulta"
+        [routerLink]="['/agendamento-consulta/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.home.createLabel"> Create a new Agendamento Consulta </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="agendamentoConsultas?.length === 0">
+    <span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.home.notFound">No agendamentoConsultas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="agendamentoConsultas && agendamentoConsultas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.idAgendamento">Id Agendamento</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.convenio">Convenio</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.tipoAgendamento">Tipo Agendamento</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.procedimento">Procedimento</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.dataHora">Data Hora</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.statusAgendamento">Status Agendamento</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.usuario">Usuario</span></th>
+          <th scope="col"><span jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.medico">Medico</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agendamentoConsulta of agendamentoConsultas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/agendamento-consulta', agendamentoConsulta.id, 'view']">{{ agendamentoConsulta.id }}</a>
+          </td>
+          <td>{{ agendamentoConsulta.idAgendamento }}</td>
+          <td jhiTranslate="{{ 'agendamentoMedicoApp.Convenio.' + agendamentoConsulta.convenio }}">{{ agendamentoConsulta.convenio }}</td>
+          <td jhiTranslate="{{ 'agendamentoMedicoApp.TipoAgendamento.' + agendamentoConsulta.tipoAgendamento }}">
+            {{ agendamentoConsulta.tipoAgendamento }}
+          </td>
+          <td jhiTranslate="{{ 'agendamentoMedicoApp.Procedimento.' + agendamentoConsulta.procedimento }}">
+            {{ agendamentoConsulta.procedimento }}
+          </td>
+          <td>{{ agendamentoConsulta.dataHora | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'agendamentoMedicoApp.Status.' + agendamentoConsulta.statusAgendamento }}">
+            {{ agendamentoConsulta.statusAgendamento }}
+          </td>
+          <td>
+            <div *ngIf="agendamentoConsulta.usuario">
+              <a [routerLink]="['/usuario', agendamentoConsulta.usuario?.id, 'view']">{{ agendamentoConsulta.usuario?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="agendamentoConsulta.medico">
+              <a [routerLink]="['/medico', agendamentoConsulta.medico?.id, 'view']">{{ agendamentoConsulta.medico?.nome }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/agendamento-consulta', agendamentoConsulta.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/agendamento-consulta', agendamentoConsulta.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(agendamentoConsulta)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

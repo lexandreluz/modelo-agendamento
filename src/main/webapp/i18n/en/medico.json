@@ -1,0 +1,27 @@
+{
+  "agendamentoMedicoApp": {
+    "medico": {
+      "home": {
+        "title": "Medicos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Medico",
+        "createOrEditLabel": "Create or edit a Medico",
+        "notFound": "No Medicos found"
+      },
+      "created": "A new Medico is created with identifier {{ param }}",
+      "updated": "A Medico is updated with identifier {{ param }}",
+      "deleted": "A Medico is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Medico {{ id }}?"
+      },
+      "detail": {
+        "title": "Medico"
+      },
+      "id": "ID",
+      "crm": "Crm",
+      "nome": "Nome",
+      "telefone": "Telefone",
+      "especialidade": "Especialidade"
+    }
+  }
+}

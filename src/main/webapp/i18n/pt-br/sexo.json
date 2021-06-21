@@ -1,0 +1,10 @@
+{
+  "agendamentoMedicoApp": {
+    "Sexo": {
+      "null": "",
+      "MASCULINO": "MASCULINO",
+      "FEMININO": "FEMININO",
+      "OUTRO": "OUTRO"
+    }
+  }
+}

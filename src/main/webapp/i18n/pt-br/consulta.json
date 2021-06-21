@@ -1,0 +1,27 @@
+{
+  "agendamentoMedicoApp": {
+    "consulta": {
+      "home": {
+        "title": "Consultas",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Consulta",
+        "createOrEditLabel": "Criar ou editar Consulta",
+        "notFound": "Nenhum Consulta encontrado"
+      },
+      "created": "Um novo Consulta foi criado com o identificador {{ param }}",
+      "updated": "Um Consulta foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Consulta foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Consulta {{ id }}?"
+      },
+      "detail": {
+        "title": "Consulta"
+      },
+      "id": "ID",
+      "procedimento": "Procedimento",
+      "tipoConsulta": "Tipo Consulta",
+      "medico": "Medico",
+      "laudo": "Laudo"
+    }
+  }
+}
