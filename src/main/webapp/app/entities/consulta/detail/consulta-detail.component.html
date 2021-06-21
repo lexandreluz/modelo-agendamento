@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="consulta">
+      <h2 data-cy="consultaDetailsHeading"><span jhiTranslate="agendamentoMedicoApp.consulta.detail.title">Consulta</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ consulta.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.consulta.procedimento">Procedimento</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'agendamentoMedicoApp.Procedimento.' + consulta.procedimento }}">{{ consulta.procedimento }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.consulta.tipoConsulta">Tipo Consulta</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'agendamentoMedicoApp.Especialicacao.' + consulta.tipoConsulta }}">{{ consulta.tipoConsulta }}</span>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.consulta.medico">Medico</span></dt>
+        <dd>
+          <div *ngIf="consulta.medico">
+            <a [routerLink]="['/medico', consulta.medico?.id, 'view']">{{ consulta.medico?.nome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="agendamentoMedicoApp.consulta.laudo">Laudo</span></dt>
+        <dd>
+          <div *ngIf="consulta.laudo">
+            <a [routerLink]="['/laudo', consulta.laudo?.id, 'view']">{{ consulta.laudo?.parecerMedico }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/consulta', consulta.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

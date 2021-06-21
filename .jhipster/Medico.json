@@ -1,0 +1,34 @@
+{
+  "name": "Medico",
+  "fields": [
+    {
+      "fieldName": "crm",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "especialidade",
+      "fieldType": "Especialicacao",
+      "fieldValues": "CLINICA_GERAL,EMFERMAGEM,GERIATRIA,GINECOLOGIA,OBSTETRICIA,NUTRICIONISTA,ONCOLOGIA,NEUROLOGIA,PEDIATRIA,PSICOLOGIA"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "medico",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210621213048"
+}

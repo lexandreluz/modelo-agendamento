@@ -1,0 +1,184 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-agendamento-consulta-heading"
+        data-cy="AgendamentoConsultaCreateUpdateHeading"
+        jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.home.createOrEditLabel"
+      >
+        Create or edit a Agendamento Consulta
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.idAgendamento" for="field_idAgendamento"
+            >Id Agendamento</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="idAgendamento"
+            id="field_idAgendamento"
+            data-cy="idAgendamento"
+            formControlName="idAgendamento"
+          />
+          <div
+            *ngIf="
+              editForm.get('idAgendamento')!.invalid && (editForm.get('idAgendamento')!.dirty || editForm.get('idAgendamento')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('idAgendamento')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('idAgendamento')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.convenio" for="field_convenio"
+            >Convenio</label
+          >
+          <select class="form-control" name="convenio" formControlName="convenio" id="field_convenio" data-cy="convenio">
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.Convenio.null' | translate }}</option>
+            <option value="BANCARIO">{{ 'agendamentoMedicoApp.Convenio.BANCARIO' | translate }}</option>
+            <option value="FUNERARIA">{{ 'agendamentoMedicoApp.Convenio.FUNERARIA' | translate }}</option>
+            <option value="PARTICULAR">{{ 'agendamentoMedicoApp.Convenio.PARTICULAR' | translate }}</option>
+            <option value="OUTRO">{{ 'agendamentoMedicoApp.Convenio.OUTRO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.tipoAgendamento"
+            for="field_tipoAgendamento"
+            >Tipo Agendamento</label
+          >
+          <select
+            class="form-control"
+            name="tipoAgendamento"
+            formControlName="tipoAgendamento"
+            id="field_tipoAgendamento"
+            data-cy="tipoAgendamento"
+          >
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.TipoAgendamento.null' | translate }}</option>
+            <option value="EMERGENCIA">{{ 'agendamentoMedicoApp.TipoAgendamento.EMERGENCIA' | translate }}</option>
+            <option value="NOVA_CONSULTA">{{ 'agendamentoMedicoApp.TipoAgendamento.NOVA_CONSULTA' | translate }}</option>
+            <option value="RETORNO">{{ 'agendamentoMedicoApp.TipoAgendamento.RETORNO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.procedimento" for="field_procedimento"
+            >Procedimento</label
+          >
+          <select class="form-control" name="procedimento" formControlName="procedimento" id="field_procedimento" data-cy="procedimento">
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.Procedimento.null' | translate }}</option>
+            <option value="CONSULTA">{{ 'agendamentoMedicoApp.Procedimento.CONSULTA' | translate }}</option>
+            <option value="EMFERMAGEM">{{ 'agendamentoMedicoApp.Procedimento.EMFERMAGEM' | translate }}</option>
+            <option value="OUTRO">{{ 'agendamentoMedicoApp.Procedimento.OUTRO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.dataHora" for="field_dataHora"
+            >Data Hora</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dataHora"
+              data-cy="dataHora"
+              type="datetime-local"
+              class="form-control"
+              name="dataHora"
+              formControlName="dataHora"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.statusAgendamento"
+            for="field_statusAgendamento"
+            >Status Agendamento</label
+          >
+          <select
+            class="form-control"
+            name="statusAgendamento"
+            formControlName="statusAgendamento"
+            id="field_statusAgendamento"
+            data-cy="statusAgendamento"
+          >
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.Status.null' | translate }}</option>
+            <option value="CONCLUIDO">{{ 'agendamentoMedicoApp.Status.CONCLUIDO' | translate }}</option>
+            <option value="AGENDADO">{{ 'agendamentoMedicoApp.Status.AGENDADO' | translate }}</option>
+            <option value="CANCELADO">{{ 'agendamentoMedicoApp.Status.CANCELADO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.usuario" for="field_usuario"
+            >Usuario</label
+          >
+          <select class="form-control" id="field_usuario" data-cy="usuario" name="usuario" formControlName="usuario">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usuarioOption.id === editForm.get('usuario')!.value?.id ? editForm.get('usuario')!.value : usuarioOption"
+              *ngFor="let usuarioOption of usuariosSharedCollection; trackBy: trackUsuarioById"
+            >
+              {{ usuarioOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.agendamentoConsulta.medico" for="field_medico">Medico</label>
+          <select class="form-control" id="field_medico" data-cy="medico" name="medico" formControlName="medico">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="medicoOption.id === editForm.get('medico')!.value?.id ? editForm.get('medico')!.value : medicoOption"
+              *ngFor="let medicoOption of medicosSharedCollection; trackBy: trackMedicoById"
+            >
+              {{ medicoOption.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

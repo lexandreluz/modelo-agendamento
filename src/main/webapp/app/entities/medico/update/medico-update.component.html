@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-medico-heading" data-cy="MedicoCreateUpdateHeading" jhiTranslate="agendamentoMedicoApp.medico.home.createOrEditLabel">
+        Create or edit a Medico
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.medico.crm" for="field_crm">Crm</label>
+          <input type="text" class="form-control" name="crm" id="field_crm" data-cy="crm" formControlName="crm" />
+          <div *ngIf="editForm.get('crm')!.invalid && (editForm.get('crm')!.dirty || editForm.get('crm')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('crm')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.medico.nome" for="field_nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.medico.telefone" for="field_telefone">Telefone</label>
+          <input type="text" class="form-control" name="telefone" id="field_telefone" data-cy="telefone" formControlName="telefone" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="agendamentoMedicoApp.medico.especialidade" for="field_especialidade"
+            >Especialidade</label
+          >
+          <select
+            class="form-control"
+            name="especialidade"
+            formControlName="especialidade"
+            id="field_especialidade"
+            data-cy="especialidade"
+          >
+            <option [ngValue]="null">{{ 'agendamentoMedicoApp.Especialicacao.null' | translate }}</option>
+            <option value="CLINICA_GERAL">{{ 'agendamentoMedicoApp.Especialicacao.CLINICA_GERAL' | translate }}</option>
+            <option value="EMFERMAGEM">{{ 'agendamentoMedicoApp.Especialicacao.EMFERMAGEM' | translate }}</option>
+            <option value="GERIATRIA">{{ 'agendamentoMedicoApp.Especialicacao.GERIATRIA' | translate }}</option>
+            <option value="GINECOLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.GINECOLOGIA' | translate }}</option>
+            <option value="OBSTETRICIA">{{ 'agendamentoMedicoApp.Especialicacao.OBSTETRICIA' | translate }}</option>
+            <option value="NUTRICIONISTA">{{ 'agendamentoMedicoApp.Especialicacao.NUTRICIONISTA' | translate }}</option>
+            <option value="ONCOLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.ONCOLOGIA' | translate }}</option>
+            <option value="NEUROLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.NEUROLOGIA' | translate }}</option>
+            <option value="PEDIATRIA">{{ 'agendamentoMedicoApp.Especialicacao.PEDIATRIA' | translate }}</option>
+            <option value="PSICOLOGIA">{{ 'agendamentoMedicoApp.Especialicacao.PSICOLOGIA' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

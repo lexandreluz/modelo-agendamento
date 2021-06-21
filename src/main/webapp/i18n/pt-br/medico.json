@@ -1,0 +1,27 @@
+{
+  "agendamentoMedicoApp": {
+    "medico": {
+      "home": {
+        "title": "Medicos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Medico",
+        "createOrEditLabel": "Criar ou editar Medico",
+        "notFound": "Nenhum Medico encontrado"
+      },
+      "created": "Um novo Medico foi criado com o identificador {{ param }}",
+      "updated": "Um Medico foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Medico foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Medico {{ id }}?"
+      },
+      "detail": {
+        "title": "Medico"
+      },
+      "id": "ID",
+      "crm": "Crm",
+      "nome": "Nome",
+      "telefone": "Telefone",
+      "especialidade": "Especialidade"
+    }
+  }
+}

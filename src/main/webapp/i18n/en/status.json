@@ -1,0 +1,10 @@
+{
+  "agendamentoMedicoApp": {
+    "Status": {
+      "null": "",
+      "CONCLUIDO": "CONCLUIDO",
+      "AGENDADO": "AGENDADO",
+      "CANCELADO": "CANCELADO"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "agendamentoMedicoApp": {
+    "Procedimento": {
+      "null": "",
+      "CONSULTA": "CONSULTA",
+      "EMFERMAGEM": "EMFERMAGEM",
+      "OUTRO": "OUTRO"
+    }
+  }
+}

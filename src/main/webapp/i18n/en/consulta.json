@@ -1,0 +1,27 @@
+{
+  "agendamentoMedicoApp": {
+    "consulta": {
+      "home": {
+        "title": "Consultas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Consulta",
+        "createOrEditLabel": "Create or edit a Consulta",
+        "notFound": "No Consultas found"
+      },
+      "created": "A new Consulta is created with identifier {{ param }}",
+      "updated": "A Consulta is updated with identifier {{ param }}",
+      "deleted": "A Consulta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Consulta {{ id }}?"
+      },
+      "detail": {
+        "title": "Consulta"
+      },
+      "id": "ID",
+      "procedimento": "Procedimento",
+      "tipoConsulta": "Tipo Consulta",
+      "medico": "Medico",
+      "laudo": "Laudo"
+    }
+  }
+}

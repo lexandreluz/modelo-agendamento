@@ -1,0 +1,17 @@
+{
+  "agendamentoMedicoApp": {
+    "Especialicacao": {
+      "null": "",
+      "CLINICA_GERAL": "CLINICA_GERAL",
+      "EMFERMAGEM": "EMFERMAGEM",
+      "GERIATRIA": "GERIATRIA",
+      "GINECOLOGIA": "GINECOLOGIA",
+      "OBSTETRICIA": "OBSTETRICIA",
+      "NUTRICIONISTA": "NUTRICIONISTA",
+      "ONCOLOGIA": "ONCOLOGIA",
+      "NEUROLOGIA": "NEUROLOGIA",
+      "PEDIATRIA": "PEDIATRIA",
+      "PSICOLOGIA": "PSICOLOGIA"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "agendamentoMedicoApp": {
+    "agendamentoConsulta": {
+      "home": {
+        "title": "Agendamento Consultas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Agendamento Consulta",
+        "createOrEditLabel": "Create or edit a Agendamento Consulta",
+        "notFound": "No Agendamento Consultas found"
+      },
+      "created": "A new Agendamento Consulta is created with identifier {{ param }}",
+      "updated": "A Agendamento Consulta is updated with identifier {{ param }}",
+      "deleted": "A Agendamento Consulta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Agendamento Consulta {{ id }}?"
+      },
+      "detail": {
+        "title": "Agendamento Consulta"
+      },
+      "id": "ID",
+      "idAgendamento": "Id Agendamento",
+      "convenio": "Convenio",
+      "tipoAgendamento": "Tipo Agendamento",
+      "procedimento": "Procedimento",
+      "dataHora": "Data Hora",
+      "statusAgendamento": "Status Agendamento",
+      "usuario": "Usuario",
+      "medico": "Medico"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+export enum Status {
+  CONCLUIDO = 'CONCLUIDO',
+
+  AGENDADO = 'AGENDADO',
+
+  CANCELADO = 'CANCELADO',
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Consulta",
+  "fields": [
+    {
+      "fieldName": "procedimento",
+      "fieldType": "Procedimento",
+      "fieldValues": "CONSULTA,EMFERMAGEM,OUTRO"
+    },
+    {
+      "fieldName": "tipoConsulta",
+      "fieldType": "Especialicacao",
+      "fieldValues": "CLINICA_GERAL,EMFERMAGEM,GERIATRIA,GINECOLOGIA,OBSTETRICIA,NUTRICIONISTA,ONCOLOGIA,NEUROLOGIA,PEDIATRIA,PSICOLOGIA"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "medico",
+      "otherEntityRelationshipName": "consulta",
+      "relationshipName": "medico",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "laudo",
+      "otherEntityRelationshipName": "consulta",
+      "relationshipName": "laudo",
+      "otherEntityField": "parecerMedico"
+    }
+  ],
+  "entityTableName": "consulta",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210621213051"
+}

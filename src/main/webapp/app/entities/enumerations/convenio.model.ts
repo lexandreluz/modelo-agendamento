@@ -1,0 +1,9 @@
+export enum Convenio {
+  BANCARIO = 'BANCARIO',
+
+  FUNERARIA = 'FUNERARIA',
+
+  PARTICULAR = 'PARTICULAR',
+
+  OUTRO = 'OUTRO',
+}

@@ -1,0 +1,11 @@
+{
+  "agendamentoMedicoApp": {
+    "Convenio": {
+      "null": "",
+      "BANCARIO": "BANCARIO",
+      "FUNERARIA": "FUNERARIA",
+      "PARTICULAR": "PARTICULAR",
+      "OUTRO": "OUTRO"
+    }
+  }
+}
