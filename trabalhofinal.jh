@@ -1,0 +1,86 @@
+entity Medico {
+	crm String required
+    nome String
+    telefone String
+    especialidade Especialicacao
+}
+
+enum Especialicacao {
+	CLINICA_GERAL
+    EMFERMAGEM
+    GERIATRIA
+    GINECOLOGIA
+    OBSTETRICIA
+    NUTRICIONISTA
+    ONCOLOGIA
+    NEUROLOGIA
+    PEDIATRIA
+    PSICOLOGIA
+}
+
+entity Usuario {
+	cpf String required
+    nome String
+    dataNascimento LocalDate
+    rg Integer
+    sexo Sexo
+    telefone String
+    email String
+}
+
+enum Sexo {
+	MASCULINO
+    FEMININO
+    OUTRO
+}
+
+entity AgendamentoConsulta {
+	idAgendamento Integer required
+	convenio Convenio
+	tipoAgendamento TipoAgendamento
+    procedimento Procedimento
+    dataHora ZonedDateTime
+    statusAgendamento Status
+}
+
+enum Status {
+	CONCLUIDO
+	AGENDADO
+    CANCELADO
+}
+
+enum Procedimento {
+	CONSULTA
+    EMFERMAGEM
+    OUTRO
+}
+
+enum Convenio {
+	BANCARIO
+    FUNERARIA
+    PARTICULAR
+	OUTRO	
+}
+
+enum TipoAgendamento {
+	EMERGENCIA
+    NOVA_CONSULTA
+    RETORNO
+}
+
+entity Consulta {
+	procedimento Procedimento
+    tipoConsulta Especialicacao
+}
+
+entity Laudo {
+	parecerMedico TextBlob
+    encaminhamento TextBlob
+}
+
+relationship ManyToOne {
+	AgendamentoConsulta{Usuario(nome)} to Usuario
+    AgendamentoConsulta{Medico(nome)} to Medico
+    Consulta{Medico(nome)} to Medico
+    Consulta{Laudo(parecerMedico)} to Laudo
+}
