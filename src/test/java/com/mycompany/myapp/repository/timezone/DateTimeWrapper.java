@@ -6,13 +6,14 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "jhi_date_time_wrapper")
+@Table(name = "jhip_date_time_wrapper")
 public class DateTimeWrapper implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
     @Column(name = "instant")

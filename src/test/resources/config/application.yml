@@ -18,10 +18,10 @@ spring:
     # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
     #active: testcontainers
   application:
-    name: agendamentoMedico
+    name: Agendamento
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:agendamentomedico;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:agendamento;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name:
     username:
     password:
@@ -57,13 +57,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: agendamento-medico-task-
+      thread-name-prefix: agendamento-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: agendamento-medico-scheduling-
+      thread-name-prefix: agendamento-scheduling-
       pool:
         size: 1
   thymeleaf:
@@ -81,7 +81,7 @@ server:
 
 jhipster:
   clientApp:
-    name: 'agendamentoMedicoApp'
+    name: 'agendamentoApp'
   logging:
     # To test json console appender
     use-json-format: false

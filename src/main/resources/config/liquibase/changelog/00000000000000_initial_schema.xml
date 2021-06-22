@@ -6,14 +6,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
+    <changeSet id="00000000000000" author="jhipster">
+        <createSequence sequenceName="sequence_generator" startValue="1050" incrementBy="50"/>
+    </changeSet>
 
     <!--
         JHipster core tables.
         The initial schema has the '00000000000001' id, so that it is over-written if we re-generate it.
     -->
     <changeSet id="00000000000001" author="jhipster">
-        <createTable tableName="jhi_user">
-            <column name="id" type="bigint" autoIncrement="true">
+        <createTable tableName="jhip_user">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="login" type="varchar(50)">
@@ -43,13 +46,13 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
-        <createTable tableName="jhi_authority">
+        <createTable tableName="jhip_authority">
             <column name="name" type="varchar(50)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
         </createTable>
 
-        <createTable tableName="jhi_user_authority">
+        <createTable tableName="jhip_user_authority">
             <column name="user_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
@@ -58,50 +61,51 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhip_user_authority"/>
 
         <addForeignKeyConstraint baseColumnNames="authority_name"
-                                 baseTableName="jhi_user_authority"
+                                 baseTableName="jhip_user_authority"
                                  constraintName="fk_authority_name"
                                  referencedColumnNames="name"
-                                 referencedTableName="jhi_authority"/>
+                                 referencedTableName="jhip_authority"/>
 
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="jhi_user_authority"
+                                 baseTableName="jhip_user_authority"
                                  constraintName="fk_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="jhi_user"/>
+                                 referencedTableName="jhip_user"/>
 
         <addNotNullConstraint   columnName="password_hash"
                                 columnDataType="varchar(60)"
-                                tableName="jhi_user"/>
+                                tableName="jhip_user"/>
         <loadData
                   file="config/liquibase/data/user.csv"
                   separator=";"
-                  tableName="jhi_user">
+                  tableName="jhip_user">
+            <column name="id" type="numeric"/>
             <column name="activated" type="boolean"/>
             <column name="created_date" type="timestamp"/>
         </loadData>
-        <dropDefaultValue tableName="jhi_user" columnName="created_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="jhip_user" columnName="created_date" columnDataType="${datetimeType}"/>
         <loadData
                   file="config/liquibase/data/authority.csv"
                   separator=";"
-                  tableName="jhi_authority">
+                  tableName="jhip_authority">
             <column name="name" type="string"/>
         </loadData>
 
         <loadData
                   file="config/liquibase/data/user_authority.csv"
                   separator=";"
-                  tableName="jhi_user_authority">
+                  tableName="jhip_user_authority">
             <column name="user_id" type="numeric"/>
         </loadData>
     </changeSet>
 
     <changeSet author="jhipster" id="00000000000002" context="test">
-        <createTable tableName="jhi_date_time_wrapper">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="jhi_date_time_wrapperPK"/>
+        <createTable tableName="jhip_date_time_wrapper">
+            <column  name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhip_date_time_wrapperPK"/>
             </column>
             <column name="instant" type="timestamp"/>
             <column name="local_date_time" type="timestamp"/>

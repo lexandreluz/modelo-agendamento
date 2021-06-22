@@ -19,8 +19,7 @@ management:
     web:
       base-path: /management
       exposure:
-        include:
-          ['configprops', 'env', 'health', 'info', 'jhimetrics', 'logfile', 'loggers', 'prometheus', 'threaddump', 'caches', 'liquibase']
+        include: ['configprops', 'env', 'health', 'info', 'jhimetrics', 'logfile', 'loggers', 'prometheus', 'threaddump', 'liquibase']
   endpoint:
     health:
       show-details: when_authorized
@@ -67,7 +66,7 @@ management:
 
 spring:
   application:
-    name: agendamentoMedico
+    name: Agendamento
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -91,7 +90,7 @@ spring:
       hibernate.jdbc.time_zone: UTC
       hibernate.id.new_generator_mappings: true
       hibernate.connection.provider_disables_autocommit: true
-      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.use_second_level_cache: false
       hibernate.cache.use_query_cache: false
       hibernate.generate_statistics: false
       # modify batch size as necessary
@@ -111,13 +110,13 @@ spring:
     allow-bean-definition-overriding: true
   task:
     execution:
-      thread-name-prefix: agendamento-medico-task-
+      thread-name-prefix: agendamento-task-
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: agendamento-medico-scheduling-
+      thread-name-prefix: agendamento-scheduling-
       pool:
         size: 2
   thymeleaf:
@@ -145,7 +144,7 @@ info:
 
 jhipster:
   clientApp:
-    name: 'agendamentoMedicoApp'
+    name: 'agendamentoApp'
   # By default CORS is disabled. Uncomment to enable.
   # cors:
   #   allowed-origins: "http://localhost:8100,http://localhost:9000"
@@ -155,12 +154,12 @@ jhipster:
   #   allow-credentials: true
   #   max-age: 1800
   mail:
-    from: agendamentoMedico@localhost
+    from: Agendamento@localhost
   api-docs:
     default-include-pattern: ${server.servlet.context-path:}/api/.*
     management-include-pattern: ${server.servlet.context-path:}/management/.*
-    title: agendamentoMedico API
-    description: agendamentoMedico API documentation
+    title: Agendamento API
+    description: Agendamento API documentation
     version: 0.0.1
     terms-of-service-url:
     contact-name:

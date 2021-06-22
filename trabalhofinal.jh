@@ -98,7 +98,12 @@ application {
         clientPackageManager npm
         databaseType sql
         prodDatabaseType postgresql
-        devDatabaseType sql
+        jhipster-entities-trabalhofinal-195341875375484
+        devDatabaseType postgresql
+        enableSwaggerCodegen true
+        jhiPrefix jhip
+        skipClient true
+        nativeLanguage pt-br
         enableSwaggerCodegen true
         jhiPrefix jhip
         skipClient true
