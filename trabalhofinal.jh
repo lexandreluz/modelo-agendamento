@@ -84,3 +84,28 @@ relationship ManyToOne {
     Consulta{Medico(nome)} to Medico
     Consulta{Laudo(parecerMedico)} to Laudo
 }
+
+application {
+	config {
+    	applicationType monolith
+        serviceDiscoveryType no
+        serverPort 8080
+        authenticationType jwt
+        baseName Agendamento
+        packageName com.mycompany.myapp
+        buildTool maven
+        cacheProvider no
+        clientPackageManager npm
+        databaseType sql
+        prodDatabaseType postgresql
+        devDatabaseType postgresql
+        enableSwaggerCodegen true
+        jhiPrefix jhip
+        skipClient true
+        nativeLanguage pt-br
+    }
+    paginate * with pagination
+    dto * with mapstruct
+    service all with serviceImpl
+    filter *
+}
