@@ -1,6 +1,6 @@
 package com.mycompany.myapp;
 
-import com.mycompany.myapp.AgendamentoMedicoApp;
+import com.mycompany.myapp.AgendamentoApp;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,6 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = AgendamentoMedicoApp.class)
+@SpringBootTest(classes = AgendamentoApp.class)
 public @interface IntegrationTest {
 }
