@@ -98,11 +98,15 @@ application {
         clientPackageManager npm
         databaseType sql
         prodDatabaseType postgresql
+        jhipster-entities-trabalhofinal-195341875375484
         devDatabaseType postgresql
         enableSwaggerCodegen true
         jhiPrefix jhip
         skipClient true
         nativeLanguage pt-br
+        enableSwaggerCodegen true
+        jhiPrefix jhip
+        skipClient true
     }
     paginate * with pagination
     dto * with mapstruct
